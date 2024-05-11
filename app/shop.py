@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import datetime
 
 
 @dataclass
@@ -16,7 +17,7 @@ class Shops:
                      product_cart: dict,
                      product_cost: float) -> None:
         print(f"\n"
-              f"Date: 04/01/2021 12:33:41\n"
+              f"Date: {datetime.datetime.now().strftime('%d/%m/%Y %X')}\n"
               f"Thanks, {customer_name}, for your purchase!\n"
               f"You have bought:")
         for product, quantity in product_cart.items():

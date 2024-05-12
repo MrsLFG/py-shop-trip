@@ -3,7 +3,7 @@ import datetime
 
 
 @dataclass
-class Shops:
+class Shop:
     name: str
     location: list
     products: dict

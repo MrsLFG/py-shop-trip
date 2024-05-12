@@ -1,7 +1,7 @@
 import json
 
 from app.customer import Customers
-from app.shop import Shops
+from app.shop import Shop
 
 
 def shop_trip() -> None:
@@ -9,7 +9,7 @@ def shop_trip() -> None:
         config = json.load(file)
 
         fuel_price = config["FUEL_PRICE"]
-        shops = [Shops(**shop) for shop in config["shops"]]
+        shops = [Shop(**shop) for shop in config["shops"]]
 
         for customer in config["customers"]:
             Customers(**customer).go_shopping(fuel_price, shops)

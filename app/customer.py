@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from app.car import Car
-from app.shop import Shops
+from app.shop import Shop
 
 
 @dataclass
@@ -19,19 +19,19 @@ class Customers:
     def customers_info(self) -> None:
         print(f"{self.name} has {self.money} dollars")
 
-    def calculate_distance(self, shop: Shops) -> float:
+    def calculate_distance(self, shop: Shop) -> float:
         return ((self.location[0] - shop.location[0]) ** 2
                 + (self.location[1] - shop.location[1]) ** 2) ** 0.5
 
-    def calculate_trip_cost(self, fuel_price: float, shop: Shops) -> float:
+    def calculate_trip_cost(self, fuel_price: float, shop: Shop) -> float:
         distance = self.calculate_distance(shop)
         fuel_consumption = self.car.fuel_consumption_per_100_km(distance)
         return (fuel_consumption * fuel_price) * 2
 
     def look_for_cheapest_shop(self,
                                fuel_price: float,
-                               shops: list[Shops]
-                               ) -> tuple[None | Shops, float, float]:
+                               shops: list[Shop]
+                               ) -> tuple[None | Shop, float, float]:
         cheapest_shop = None
         min_product_cost = None
         min_total_cost = float("inf")
@@ -51,7 +51,7 @@ class Customers:
         return cheapest_shop, min_total_cost, min_product_cost
 
     def make_purchase(self,
-                      shop: Shops,
+                      shop: Shop,
                       total_cost: float,
                       product_cost: float) -> None:
         print(f"{self.name} rides to {shop.name}")
@@ -62,7 +62,7 @@ class Customers:
 
     def go_shopping(self,
                     fuel_price: float,
-                    shops: list[Shops]) -> None:
+                    shops: list[Shop]) -> None:
         self.customers_info()
         (
             cheapest_shop,

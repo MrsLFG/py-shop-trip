@@ -55,10 +55,14 @@ class Customers:
                       total_cost: float,
                       product_cost: float) -> None:
         print(f"{self.name} rides to {shop.name}")
+        self.location = shop.location
+
         shop.prints_check(self.name, self.product_cart, product_cost)
         self.money -= total_cost
         print(f"{self.name} rides home\n"
               f"{self.name} now has {round(self.money, 2)} dollars\n")
+
+        self.location = [0, 0]
 
     def go_shopping(self,
                     fuel_price: float,

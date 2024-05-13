@@ -59,10 +59,12 @@ class Customers:
 
         shop.prints_check(self.name, self.product_cart, product_cost)
         self.money -= total_cost
-        print(f"{self.name} rides home\n"
-              f"{self.name} now has {round(self.money, 2)} dollars\n")
+        print(f"{self.name} rides home")
+        self.return_home(self.location)
+        print(f"{self.name} now has {round(self.money, 2)} dollars\n")
 
-        self.location = [0, 0]
+    def return_home(self, home_location: list) -> None:
+        self.location = home_location
 
     def go_shopping(self,
                     fuel_price: float,
